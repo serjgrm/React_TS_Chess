@@ -9,7 +9,9 @@ interface BoardProps {
 }
 
 
+
 const BoardComponent: FC<BoardProps>  = ({board ,setBoard }:BoardProps) => {
+
     return (
         <div className='board'>
             {board.cells.map((row,index)=>
@@ -19,7 +21,6 @@ const BoardComponent: FC<BoardProps>  = ({board ,setBoard }:BoardProps) => {
                         )}
                 </Fragment>
             )}
-            
         </div>
     );
 };

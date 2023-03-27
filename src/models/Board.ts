@@ -1,9 +1,10 @@
 import {Cell} from './Cell'
 import { Colors } from './Colors';
+import { Quenn } from './figures/Queen';
 
 export class Board {
     cells: Cell[][] = [];
-    public initCells(){
+    public initCells(): void{
         for (let i = 0; i< 8; i++){
             const row : Cell[] = []; 
             for (let j = 0; j< 8; j++){
@@ -16,4 +17,21 @@ export class Board {
             this.cells.push(row);
         }
     }
+
+    public getCell(x:number,y:number){
+        return this.cells[y][x]
+    }
+
+
+    public addFigures(){
+        new Quenn(Colors.WHITE,this.getCell(3,3))
+        new Quenn(Colors.BLACK,this.getCell(5,5))
+
+    }
+
+
+
+
+
 }
+

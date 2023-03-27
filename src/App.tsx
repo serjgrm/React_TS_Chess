@@ -6,17 +6,16 @@ import { Board } from './models/Board';
 const App = () => {
 
   const [board,setBoard] = useState(new Board())
-
-
-
   useEffect(()=>{
     restart()
   },[])
 
+  
 
   function restart(){
     const newBoard = new Board();
     newBoard.initCells();
+    newBoard.addFigures();
     setBoard(newBoard)
   }
 
