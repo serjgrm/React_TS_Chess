@@ -2,7 +2,6 @@ import React,{FC, Fragment} from 'react';
 import CellComponent from './CellComponent';
 import { Board } from '../models/Board';
 
-
 interface BoardProps {
     board: Board;
     setBoard: (bord: Board) => void;
