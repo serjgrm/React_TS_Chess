@@ -31,7 +31,7 @@
     position: relative;
 }
 .black {
-    background-color: rgb(255, 41, 41);
+    background-color: rgb(59, 204, 248);
 }
 .white {
     background-color: #d0c6af;
@@ -40,6 +40,7 @@
 .selected {
     background-color: brown;
 }
+
 .available {
     height: 12px;
     width: 12px;
