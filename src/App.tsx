@@ -9,7 +9,6 @@ const App = () => {
   useEffect(()=>{
     restart()
   },[])
-
   
 
   function restart(){

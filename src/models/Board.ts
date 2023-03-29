@@ -24,7 +24,7 @@ export class Board {
             this.cells.push(row);
         }
     }
-
+    
     public getCopyBoard():Board{
         const newBoard = new Board();
         newBoard.cells = this.cells;
