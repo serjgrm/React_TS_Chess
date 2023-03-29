@@ -16,13 +16,15 @@ const BoardComponent: FC<BoardProps>  = ({board ,setBoard }:BoardProps) => {
 
     function click (cell:Cell){
         if (selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)){
+        // if (selectedCell){ Simplified way
             selectedCell.moveFigure(cell);
             setSelectedCell(null)
-        }
-        if(cell.figure){
-            setSelectedCell(cell);
+            updateBoard();
+        } else {
+            setSelectedCell(cell)
         }
     }   
+
 
     useEffect(()=>{
         hightLightCells();
