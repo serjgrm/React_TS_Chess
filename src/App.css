@@ -36,7 +36,9 @@
 .white {
     background-color: #d0c6af;
 }
-
+.green{
+    background-color: green;
+}
 .selected {
     background-color: brown;
 }
