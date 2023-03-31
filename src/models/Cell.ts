@@ -80,7 +80,6 @@ export class Cell {
         return true
     }
 
-
     /* isEmptyDiagonal
     Если фигура двигается по диагонали, то разность координат по x и y должна совпадать 
      this.cell
@@ -92,9 +91,6 @@ export class Cell {
      absX = 2
      absY = 2
     */
-
-
-
 
     setFigure (figure:Figure){
         this.figure = figure;
