@@ -25,6 +25,4 @@ export class Queen extends Figure {
  
     return false
   }
-
-
 }

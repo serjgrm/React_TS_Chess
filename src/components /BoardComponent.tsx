@@ -2,24 +2,30 @@ import React,{FC, Fragment, useEffect, useState} from 'react';
 import CellComponent from './CellComponent';
 import { Board } from '../models/Board';
 import { Cell } from '../models/Cell';
+import { Player } from '../models/Player';
 
 interface BoardProps {
     board: Board;
     setBoard: (bord: Board) => void;
+    currentPlayer: Player | null;
+    swapPlayer: ()=>void;
 }
 
 
 
-const BoardComponent: FC<BoardProps>  = ({board ,setBoard }:BoardProps) => {
+const BoardComponent: FC<BoardProps>  = ({board ,setBoard,currentPlayer,swapPlayer }:BoardProps) => {
 
     const [selectedCell,setSelectedCell] = useState<Cell | null>(null);
 
     function click (cell:Cell){
         if (selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)){
             selectedCell.moveFigure(cell);
+            swapPlayer();
             setSelectedCell(null)
         } else {
-            setSelectedCell(cell)
+            if(cell.figure?.color === currentPlayer?.color){
+                setSelectedCell(cell)
+            }
         }
     }   
 
