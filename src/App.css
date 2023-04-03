@@ -16,6 +16,7 @@
     height: calc(64px * 8);
     display: flex;
     flex-wrap: wrap;
+    border: black solid 4px
 }
 
 .cell {
@@ -25,34 +26,40 @@
     justify-content: center;
     align-items: center;
 }
+
 .cell img {
     width: 48px;
     height: 48px;
     position: relative;
 }
 .black {
-    background-color: rgb(59, 204, 248);
+    background-color: rgb(149, 46, 46);
 }
 .white {
-    background-color: #d0c6af;
+    background-color: #eed4ac;
 }
-.green{
-    background-color: green;
-}
+
 .selected {
-    background-color: brown;
+    background-color: rgb(96, 209, 39);
 }
 
 .available {
     height: 12px;
     width: 12px;
     border-radius: 50%;
-    background-color: #22c022;
+    background-color: #cadf30;
 }
-
+.green{
+    background-color: green;
+}
 .lost {
     height: calc(50vh - 60px);
     padding: 30px;
     margin-left: 50px;
     background-color: lightgray;
+    margin: 30px;
 }
+
+
+
+

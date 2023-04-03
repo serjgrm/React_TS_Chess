@@ -5,13 +5,14 @@ import { Board } from './models/Board';
 import { Colors } from './models/Colors';
 import { Player } from './models/Player';
 import LostFigures from './components /LostFigures';
+import Timer from './components /Timer';
 
 const App = () => {
 
   const [board,setBoard] = useState(new Board());
   
-  const [whitePlayer,setWhitePlayer] = useState(new Player(Colors.WHITE));
-  const [blackPlayer,setBlackPlayer] = useState(new Player(Colors.BLACK));
+  const [whitePlayer] = useState(new Player(Colors.WHITE));
+  const [blackPlayer] = useState(new Player(Colors.BLACK));
   const [currentPlayer,setCurrentPlayer] = useState<Player | null>(null);
 
 
@@ -36,15 +37,21 @@ const App = () => {
 
   return (
     <div className='app'>
+        <Timer 
+        restart={restart}
+        currentPlayer={currentPlayer}
+        />
         <BoardComponent 
         board={board} 
         setBoard={setBoard}
         currentPlayer={currentPlayer}
         swapPlayer={swapPlayer}
         />
-
-        <LostFigures title='Black figures' figures={board.lostBlackFigures}/>
-        <LostFigures title='White figures' figures={board.lostWhiteFigures}/>
+        <div> 
+          <LostFigures title='Black figures' figures={board.lostBlackFigures}/>
+          <LostFigures title='White figures' figures={board.lostWhiteFigures}/>
+        </div>
+       
     </div>
   );
 };

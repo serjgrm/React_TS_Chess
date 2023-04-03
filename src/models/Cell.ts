@@ -78,9 +78,7 @@ export class Cell {
         }
         const dy = this.y < target.y ? 1 :-1
         const dx = this.x < target.x ? 1 :-1
-        //   dy dx
-        //   Если координата this ячейки меньше коорд target ячейки? значит двигаемся вперед и умножаем на 1
-
+ 
         for (let i = 1; i < absY; i++){ 
             if (!this.board.getCell(this.x + dx * i, this.y + dy * i).isEmpty()){
 
@@ -90,35 +88,26 @@ export class Cell {
         return true
     }
 
-    /* isEmptyDiagonal
-    Если фигура двигается по диагонали, то разность координат по x и y должна совпадать 
-     this.cell
-     x = 3
-     y = 1
-     target.cell
-     x = 5
-     y = 3
-     absX = 2
-     absY = 2
-    */
+     addLostFigure(figure: Figure) {
+        figure.color === Colors.BLACK
+          ? this.board.lostBlackFigures.push(figure)
+          : this.board.lostWhiteFigures.push(figure)
+    }
 
     setFigure (figure:Figure){
         this.figure = figure;
         this.figure.cell=this;
     }
 
-
-    moveFigure (target:Cell) {
-        if(this.figure && this.figure?.canMove(target)){ 
-            this.figure.moveFigure(target); 
-            target.setFigure(this.figure);
-            target.figure = this.figure;
-            this.figure = null; 
+    moveFigure(target: Cell) {
+        if(this.figure && this.figure?.canMove(target)) {
+          this.figure.moveFigure(target)
+          if (target.figure) {
+            this.addLostFigure(target.figure);
+          }
+          target.setFigure(this.figure);
+          this.figure = null;
         }
-    } 
-
-  
-
-
+      }
 }
 
