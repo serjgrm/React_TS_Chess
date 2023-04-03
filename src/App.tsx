@@ -4,6 +4,7 @@ import BoardComponent from './components /BoardComponent';
 import { Board } from './models/Board';
 import { Colors } from './models/Colors';
 import { Player } from './models/Player';
+import LostFigures from './components /LostFigures';
 
 const App = () => {
 
@@ -41,6 +42,9 @@ const App = () => {
         currentPlayer={currentPlayer}
         swapPlayer={swapPlayer}
         />
+
+        <LostFigures title='Black figures' figures={board.lostBlackFigures}/>
+        <LostFigures title='White figures' figures={board.lostWhiteFigures}/>
     </div>
   );
 };
