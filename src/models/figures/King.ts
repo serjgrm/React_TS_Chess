@@ -21,7 +21,4 @@ export class King extends Figure {
           }
         return false
       }
-
-
-
 }

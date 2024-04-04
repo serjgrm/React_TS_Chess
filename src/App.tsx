@@ -6,21 +6,20 @@ import { Colors } from './models/Colors';
 import { Player } from './models/Player';
 import LostFigures from './components /LostFigures';
 import Timer from './components /Timer';
+import { GameOver } from './components /GameOver/GameOver';
 
 const App = () => {
-
-  const [board,setBoard] = useState(new Board());
-  
+  const [board, setBoard] = useState(new Board());
   const [whitePlayer] = useState(new Player(Colors.WHITE));
   const [blackPlayer] = useState(new Player(Colors.BLACK));
-  const [currentPlayer,setCurrentPlayer] = useState<Player | null>(null);
-
+  const [currentPlayer, setCurrentPlayer] = useState<Player | null>(null);
+  const [gameOver, setGameOver] = useState<boolean>(false);
 
   useEffect(()=>{
     setCurrentPlayer(whitePlayer)
+    
     restart()
   },[])
-  
 
   function restart(){
     const newBoard = new Board();
@@ -29,31 +28,32 @@ const App = () => {
     setBoard(newBoard)
   }
 
-
   function swapPlayer (){
     setCurrentPlayer(currentPlayer?.color === Colors.WHITE ? blackPlayer : whitePlayer)
   }
 
-
   return (
-    <div className='app'>
-        <Timer 
-        restart={restart}
-        currentPlayer={currentPlayer}
-        />
-        <BoardComponent 
-        board={board} 
-        setBoard={setBoard}
-        currentPlayer={currentPlayer}
-        swapPlayer={swapPlayer}
-        />
-        <div> 
-          <LostFigures title='Black figures' figures={board.lostBlackFigures}/>
-          <LostFigures title='White figures' figures={board.lostWhiteFigures}/>
+    gameOver
+      ? <GameOver />
+      : (
+        <div className='app'>
+          <Timer 
+            restart={restart}
+            currentPlayer={currentPlayer}
+          />
+          <BoardComponent 
+            board={board} 
+            setBoard={setBoard}
+            currentPlayer={currentPlayer}
+            swapPlayer={swapPlayer}
+          />
+          <div> 
+            <LostFigures setGameOver={setGameOver} title='Black figures' figures={board.lostBlackFigures}/>
+            <LostFigures setGameOver={setGameOver} title='White figures' figures={board.lostWhiteFigures}/>
+          </div>
         </div>
-       
-    </div>
-  );
+      )
+  );  
 };
 
 export default App;

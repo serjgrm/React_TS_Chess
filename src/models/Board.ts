@@ -1,4 +1,4 @@
-import {Cell} from './Cell'
+import { Cell } from './Cell'
 import { Colors } from './Colors';
 import { Bishop } from './figures/Bishop';
 import { Figure } from './figures/Figure';
@@ -13,7 +13,6 @@ export class Board {
     cells: Cell[][] = [];
     lostBlackFigures: Figure[] = []
     lostWhiteFigures: Figure[] = []
-
     
     public initCells(): void{
         for (let i = 0; i< 8; i++){
@@ -89,7 +88,6 @@ export class Board {
         new Rook(Colors.WHITE, this.getCell(0, 7))
         new Rook(Colors.WHITE, this.getCell(7, 7))
       }
-
 
       public addFigures() {
         this.addPawns()

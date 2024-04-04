@@ -81,7 +81,7 @@
     bottom: 0;
   }
   
-  .buttons button p {
+  .buttons button .p-button {
     padding: 0;
     margin: 0;
     transition: all 0.4s cubic-bezier(0.35, 0.1, 0.25, 1);
@@ -90,7 +90,7 @@
     height: 100%;
   }
   
-  .buttons button p:before, .buttons button p:after {
+  .buttons button .p-button:before, .buttons button .p-button:after {
     position: absolute;
     width: 100%;
     transition: all 0.4s cubic-bezier(0.35, 0.1, 0.25, 1);
@@ -98,13 +98,13 @@
     left: 0;
   }
   
-  .buttons button p:before {
+  .buttons button .p-button:before {
     content: attr(data-title);
     top: 50%;
     transform: translateY(-50%);
   }
   
-  .buttons button p:after {
+  .buttons button .p-button:after {
     content: attr(data-text);
     top: 150%;
     color: #44d8a4;
@@ -122,12 +122,12 @@
     height: 100%;
   }
   
-  .buttons button:hover p:before {
+  .buttons button:hover .p-button:before {
     top: -50%;
     transform: rotate(5deg);
   }
   
-  .buttons button:hover p:after {
+  .buttons button:hover .p-button:after {
     top: 50%;
     transform: translateY(-50%);
   }
@@ -138,12 +138,12 @@
     transition: all 0.2s ease;
   }
   
-  .buttons button.start p:before {
+  .buttons button.start .p-button:before {
     top: -50%;
     transform: rotate(5deg);
   }
   
-  .buttons button.start p:after {
+  .buttons button.start .p-button:after {
     color: white;
     transition: all 0s ease;
     content: attr(data-start);

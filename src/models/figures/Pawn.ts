@@ -22,13 +22,7 @@ export class Pawn extends Figure {
 
         const direction = this.cell.figure?.color === Colors.BLACK ? 1 : -1;
         const firstStepDirection = this.cell.figure?.color === Colors.BLACK ? 2 : -2;
-        /*  
-          Condition for Pawn move,
-          target.y === this.cell.y || this.isFirstStep -           check pawn movement on Y axis for 1 if it is not first Step
-          target.y === this.cell.y + firstStepDirection -          check pawn movement on Y axis for 2 if it is first Step
-          target.x === this.cell.x -                               check is it X axis 
-          this.cell.board.getCell(target.x, target.y).isEmpty()  - check target cell is empty
-          */
+
         if((target.y === this.cell.y + direction || this.isFirstStep && 
           (target.y === this.cell.y + firstStepDirection)) && 
           target.x === this.cell.x && 
@@ -36,12 +30,6 @@ export class Pawn extends Figure {
             return true
            }
 
-           /*
-            Condition for atack from Pawn
-              target.y === this.cell.y + direction -                          check for movement on Y axis 1 up or 1 down
-              target.x === this.cell.x +1 || target.x === this.cell.x -1 -    check for movement on X axis 1 left or 1 right
-              this.cell.isEnemy(target)) -                                    checj is target cell have enemy figure
-            */
         if (target.y === this.cell.y + direction && 
           (target.x === this.cell.x +1 || target.x === this.cell.x -1) && 
           this.cell.isEnemy(target)){
@@ -55,6 +43,4 @@ export class Pawn extends Figure {
         super.moveFigure(target);
         this.isFirstStep = false;
       }
-
-
 }

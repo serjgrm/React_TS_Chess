@@ -1,12 +1,19 @@
-import React, {FC} from 'react';
+import React, {Dispatch, FC, SetStateAction, useEffect} from 'react';
 import {Figure} from "../models/figures/Figure";
+import { King } from '../models/figures/King';
 
 interface LostFiguresProps {
   title: string;
-  figures: Figure[]
+  figures: Figure[],
+  setGameOver: Dispatch<SetStateAction<boolean>>
 }
 
-const LostFigures: FC<LostFiguresProps> = ({title, figures}) => {
+const LostFigures: FC<LostFiguresProps> = ({title, figures, setGameOver}) => {
+
+  if (figures.some(figure => figure instanceof King)) {
+    setGameOver(true)
+  }
+
   return (
     <div className="lost">
       <h3>{title}</h3>

@@ -11,11 +11,9 @@ interface BoardProps {
     swapPlayer: ()=>void;
 }
 
+const BoardComponent: FC<BoardProps>  = ({ board, setBoard, currentPlayer, swapPlayer }:BoardProps) => {
 
-
-const BoardComponent: FC<BoardProps>  = ({board ,setBoard,currentPlayer,swapPlayer }:BoardProps) => {
-
-    const [selectedCell,setSelectedCell] = useState<Cell | null>(null);
+    const [selectedCell, setSelectedCell] = useState<Cell | null>(null);
 
     function click (cell:Cell){
         if (selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)){
@@ -44,17 +42,16 @@ const BoardComponent: FC<BoardProps>  = ({board ,setBoard,currentPlayer,swapPlay
         setBoard(newBoard)
     }
 
-
     return (
         <div className='board'>
             {board.cells.map((row,index)=>
                 <Fragment key={index}>
                     {row.map(cell=>
                         <CellComponent 
-                        click={click}
-                        cell={cell} 
-                        key={cell.id} 
-                        selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}/>
+                          click={click}
+                          cell={cell} 
+                          key={cell.id} 
+                          selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}/>
                         )}
                 </Fragment>
             )}
